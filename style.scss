@@ -1,0 +1,193 @@
+$color1: rgb(51, 56, 43);
+$color2: rgb(212, 221, 212);
+
+@mixin transition_ {
+    transition: all 200ms ease-in-out;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: sans-serif;
+
+    h1,
+    h2,
+    h3,
+    h4 {
+        color: $color1;
+        font-weight: normal;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 4rem;
+    }
+
+    h2::after {
+        content: '';
+        display: block;
+        width: 100px;
+        height: 2px;
+        background-color: $color2;
+        margin: auto;
+        margin-top: 2rem;
+    }
+
+    a {
+        text-transform: uppercase;
+        text-decoration: none;
+        color: $color1;
+    }
+
+    button,
+    .button {
+        border: 2px solid $color1;
+        padding: .5rem 1rem;
+        background-color: transparent;
+        outline: none;
+        font-size: 1rem;
+        text-transform: uppercase;
+        cursor: pointer;
+    }
+
+    nav {
+        position: absolute;
+        width: 100%;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        display: flex;
+        box-sizing: border-box;
+        justify-content: space-between;
+
+        ul {
+            display: flex;
+
+            li {
+                margin: 1rem;
+                box-sizing: border-box;
+                display: block;
+            }
+        }
+    }
+
+    footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 150px;
+
+        ul {
+            display: flex;
+            li {
+                display: inline-block;
+                margin: 1rem;
+            }
+        }
+    }
+
+    section {
+        &:first-of-type {
+            height: calc(100vh - 2rem);
+            display: grid;
+            place-content: center;
+            text-align: center;
+            background-image: url('./img/landing-bg.webp');
+            background-size: 150% 150%;
+            background-position: top right;
+            margin: 1rem;
+        }
+
+        &:nth-of-type(2) {
+            height: 100vh;
+
+            div.article-list {
+                display: flex;
+                justify-content: center;
+
+                .article-card {
+                    height: 400px;
+                    aspect-ratio: 3/4;
+                    background-color: white;
+                    margin: 1.5rem;
+                    text-align: center;
+                    @include transition_;
+                    box-shadow: 0 1rem 50px 0px rgba(0, 0, 0, 0.199);
+
+                    &:hover {
+                        @include transition_;
+                        cursor: pointer;
+                        transform: rotate(2deg);
+                    }
+
+                    img {
+                        width: 100%;
+                        height: 50%;
+                        object-fit: cover;
+                    }
+
+                    p {
+                        height: 100%;
+                        width: 70%;
+                        padding-top: 20%;
+                        margin: auto;
+                    }
+                }
+            }
+        }
+
+        &#about {
+            height: 100vh;
+            display: flex;
+
+            img {
+                width: 50%;
+                height: 100%;
+                object-fit: cover;
+                display: inline-block;
+            }
+
+            div {
+                width: 50%;
+                display: grid;
+                place-content: center;
+
+                p {
+                    text-align: justify;
+                    width: 80%;
+                    margin: auto;
+                }
+            }
+        }
+
+        &#subscription {
+            display: grid;
+            place-content: center;
+            height: 80vh;
+            text-align: center;
+
+            form {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 90vw;
+                margin: auto;
+                box-sizing: border-box;
+
+                input {
+                    border: none;
+                    padding: 1.5rem;
+                    margin: 1rem;
+                    width: 40%;
+                }
+            }
+        }
+
+        &:nth-of-type(2n) {
+            background-color: $color2;
+        }
+    }
+}
